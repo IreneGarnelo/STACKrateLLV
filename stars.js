@@ -29,6 +29,7 @@ async function makeTranslator(language) {
      * Make a translator for LANGUAGE.  A translator is a function
      * that takes a message and returns its translation. */
 
+    // CHANGED: url pointing to json (not referential for now)
     const url = "https://github.com/IreneGarnelo/STACKrateLLV/blob/main/translations/de.json";
     let dictionary = await fetch(url).then(response => {
         if (response.ok) {
@@ -133,9 +134,10 @@ class RatingForm {
                 }
             });
 
-            const legend = document.createElement("p");
-            legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
-            this.field.append(legend);
+            // CHANGED: commented following lines of code to avoid legend
+            //const legend = document.createElement("p");
+            //legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
+            //this.field.append(legend);
 
             if (this.field.classList.contains("with-comment")) {
                 this.field.append(this.generateCommentBox());
@@ -272,6 +274,7 @@ class RatingForm {
 function installCss() {
     const link = document.createElement("link");
     link.rel = "stylesheet";
+    // CHANGED: url pointing to css (not referential for now)
     link.href = "https://github.com/IreneGarnelo/STACKrateLLV/blob/main/stars.css";
     document.head.append(link);
 }
