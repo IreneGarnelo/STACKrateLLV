@@ -1,0 +1,42 @@
+/*
+Copyright 2022 by Jonas Lache <jonas.lache@ruhr-uni-bochum.de>
+Copyright 2022 by Daniel Meißner <daniel.meissner-i4k@ruhr-uni-bochum.de>
+SPDX-License-Identifier: GPL-3.0-or-later
+*/
+
+.stars-rating {
+    background-color: rgba(255, 255, 255, .5);
+    border: 1px black solid;
+    padding: 1em;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+    margin: 2em 0;
+}
+
+.stars-rating .question {
+    font-weight: bold;
+}
+
+.stars-rating .comment-box {
+    margin-top: 1rem;
+}
+
+.stars-rating .stars {
+    display: inline;
+    cursor: pointer;
+    font-size: 125%;
+}
+
+.stars-rating .error {
+    color: #df0000;
+    font-weight: bold;
+}
+
+.stars-rating .success {
+    color: #006f00;
+    font-weight: bold;
+}
+
+.ratingResults {
+    display:none;
+}
