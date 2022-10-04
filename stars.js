@@ -2,8 +2,6 @@
 // Copyright 2022 by Daniel Meißner <daniel.meissner-i4k@ruhr-uni-bochum.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-const browser = require("webextension-polyfill");
-
 "use strict";
 (function() {
 
@@ -137,9 +135,9 @@ class RatingForm {
             });
 
             // CHANGED: commented following lines of code to avoid legend
-            //const legend = document.createElement("p");
-            //legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
-            //this.field.append(legend);
+            const legend = document.createElement("p");
+            legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
+            this.field.append(legend);
 
             if (this.field.classList.contains("with-comment")) {
                 this.field.append(this.generateCommentBox());
