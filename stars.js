@@ -2,6 +2,8 @@
 // Copyright 2022 by Daniel Meißner <daniel.meissner-i4k@ruhr-uni-bochum.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+const browser = require("webextension-polyfill");
+
 "use strict";
 (function() {
 
