@@ -271,7 +271,7 @@ class RatingForm {
 
 function installCss() {
     const link = document.createElement("link");
-    // link.rel = "stylesheet";
+    link.rel = "stylesheet";
     link.href = stackrateUrl("/stars.css");
     document.head.append(link);
 }
