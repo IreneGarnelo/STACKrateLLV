@@ -29,7 +29,7 @@ async function makeTranslator(language) {
      * Make a translator for LANGUAGE.  A translator is a function
      * that takes a message and returns its translation. */
 
-    const url = "https://github.com/IreneGarnelo/STACKrateLLV/blob/main/translations/de.json";
+    const url = stackrateUrl("/translations/" + language + ".json");
     let dictionary = await fetch(url).then(response => {
         if (response.ok) {
             return response.json();
@@ -272,7 +272,7 @@ class RatingForm {
 function installCss() {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://github.com/IreneGarnelo/STACKrateLLV/blob/main/stars.css";
+    link.href = stackrateUrl("/stars.css");
     document.head.append(link);
 }
 
