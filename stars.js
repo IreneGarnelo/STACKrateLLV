@@ -337,12 +337,12 @@ function installRatingForms() {
                 }
             });
         } else {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+            // event.preventDefault();
+            // event.stopImmediatePropagation();
 
             ratingFields.forEach(field => {
                 if (!field.receivedRatings()) {
-                    field.showError("Please submit all ratings!");
+                    // field.showError("Please submit all ratings!");
                 }
             });
         }
