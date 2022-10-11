@@ -169,6 +169,7 @@ class RatingForm {
 
         const textarea = document.createElement("textarea");
         textarea.setAttribute("rows", "3");
+        textarea.setAttribute("cols", "100"); // CHANGE: added cols attribute
         textarea.setAttribute("maxlength", "500");
         textarea.addEventListener("input", event => {
             this.surveyData.comment = textarea.value;
