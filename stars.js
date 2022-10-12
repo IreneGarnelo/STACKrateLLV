@@ -170,7 +170,8 @@ class RatingForm {
             this.translate("Feel free to share with us more details below."));
 
         const textarea = document.createElement("textarea");
-        textarea.setAttribute("rows", "3");
+        textarea.setAttribute("rows", "5"); // CHANGE: made box longer
+        textarea.setAttribute("cols", "80"); // CHANGE: added cols attribute
         textarea.setAttribute("maxlength", "500");
         textarea.addEventListener("input", event => {
             this.surveyData.comment = textarea.value;
@@ -309,12 +310,12 @@ function installRatingForms() {
                     }
                 });
             } else {
-                event.preventDefault();
-                event.stopImmediatePropagation();
+                // event.preventDefault();
+                // event.stopImmediatePropagation();
 
                 queRatingFields.forEach(field => {
                     if (!field.receivedRatings()) {
-                        field.showError("Please submit all ratings!");
+                        // field.showError("Please submit all ratings!");
                     }
                 });
             }
@@ -340,12 +341,12 @@ function installRatingForms() {
                 }
             });
         } else {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+            // event.preventDefault();
+            // event.stopImmediatePropagation();
 
             ratingFields.forEach(field => {
                 if (!field.receivedRatings()) {
-                    field.showError("Please submit all ratings!");
+                    // field.showError("Please submit all ratings!");
                 }
             });
         }
