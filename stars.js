@@ -23,34 +23,6 @@ const stackrateUrl = (function() {
     };
 })();
 
-async function makeTranslator(language) {
-    /* String -> [String -> String]
-     *
-     * Make a translator for LANGUAGE.  A translator is a function
-     * that takes a message and returns its translation. */
-
-    const url = "https://github.com/IreneGarnelo/STACKrateLLV/blob/main/translations/de.json";
-    let dictionary = await fetch(url).then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            console.warn("stackrate: Unable to fetch `"
-                         + language + "' translations.");
-            return {};
-        }
-    });
-
-    function translate(message) {
-        if (message in dictionary) {
-            return dictionary[message];
-        } else {
-            return message;
-        }
-    }
-
-    return translate;
-}
-
 function parseLangTag(str) {
     const re = /^[a-z]{2}/;
     return str.match(re)[0];
@@ -77,19 +49,12 @@ class RatingForm {
         this.hackMoodle =
             field.getAttribute("data-moodle-integration") == "false" ?
             false : true;
-
-        makeTranslator(parseLangTag(langTag)).then(translate => {
-            this.translate = translate;
-            this.surveyData = this.loadState();
-            this.initialize();
-            this.saveRating();
-        });
     }
 
     initialize() {
         if (this.surveyData.submitted) {
             const successMessage = document.createElement("p");
-            successMessage.innerText = this.translate("Thanks for your rating!");
+            successMessage.innerText = "Vielen Dank für Ihre Bewertung!";
             successMessage.classList.add("success");
             this.field.replaceChildren(successMessage);
         } else {
@@ -134,7 +99,7 @@ class RatingForm {
             });
 
             const legend = document.createElement("p");
-            legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
+            legend.innerText = "";
             this.field.append(legend);
 
             if (this.field.classList.contains("with-comment")) {
@@ -147,7 +112,7 @@ class RatingForm {
     renameMoodleSubmit() {
         const button = this.stackQuestion.querySelector('input[type="submit"]');
         if (button) {
-            button.value = this.translate("Submit rating");
+            button.value = "Bewertung absenden";
         } else {
             console.warn("STACKrate: no check button in quiz");
         }
@@ -158,14 +123,10 @@ class RatingForm {
                     x => x == 0).length == 0);
     }
 
-    showError(msg) {
-        this.errorElement.innerText = this.translate(msg);
-    }
-
     generateCommentBox() {
         const commentBox = document.createElement("div");
         commentBox.append(
-            this.translate("Feel free to share with us more details below."));
+            "Bemerkungen:");
 
         const textarea = document.createElement("textarea");
         textarea.setAttribute("rows", "5"); // CHANGE: made box longer
