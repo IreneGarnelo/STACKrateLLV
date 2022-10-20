@@ -133,9 +133,10 @@ class RatingForm {
                 }
             });
 
-            const legend = document.createElement("p");
-            legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
-            this.field.append(legend);
+            // CHANGED: commented following lines of code to avoid legend
+            // const legend = document.createElement("p");
+            // legend.innerText = this.translate("(1 star = worst rating, …, 5 stars = best rating)");
+            // this.field.append(legend);
 
             if (this.field.classList.contains("with-comment")) {
                 this.field.append(this.generateCommentBox());
@@ -168,7 +169,8 @@ class RatingForm {
             this.translate("Feel free to share with us more details below."));
 
         const textarea = document.createElement("textarea");
-        textarea.setAttribute("rows", "3");
+        textarea.setAttribute("rows", "5"); // CHANGE: made box longer
+        textarea.setAttribute("cols", "80"); // CHANGE: added cols attribute
         textarea.setAttribute("maxlength", "500");
         textarea.addEventListener("input", event => {
             this.surveyData.comment = textarea.value;
