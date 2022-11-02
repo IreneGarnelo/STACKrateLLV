@@ -308,7 +308,7 @@ function installRatingForms() {
                     }
                 });
             } else {
-                if (window.RatingForm.field.classList.contains("mandatory")) {
+                if (window.RatingForm.field.getAttribute("mandatory") == "yes") {
                     event.preventDefault();
                     event.stopImmediatePropagation();
                     ratingFields.forEach(field => {
@@ -346,7 +346,7 @@ function installRatingForms() {
                 }
             });
         } else {
-            if (window.RatingForm.field.classList.contains("mandatory")) {
+            if (window.RatingForm.field.getAttribute("mandatory") == "yes") {
                 event.preventDefault();
                 event.stopImmediatePropagation();
                 ratingFields.forEach(field => {
