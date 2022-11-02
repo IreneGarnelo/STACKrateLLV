@@ -339,8 +339,15 @@ function installRatingForms() {
                 }
             });
         } else {
-            // event.preventDefault();
-            // event.stopImmediatePropagation();
+            if (this.field.classList.contains("mandatory")) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                ratingFields.forEach(field => {
+                    if (!field.receivedRatings()) {
+                        field.showError("Please submit all ratings!");
+                    }
+                });
+            }
 
             ratingFields.forEach(field => {
                 if (!field.receivedRatings()) {
