@@ -308,8 +308,15 @@ function installRatingForms() {
                     }
                 });
             } else {
-                // event.preventDefault();
-                // event.stopImmediatePropagation();
+                if (window.RatingForm.field.classList.contains("mandatory")) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    ratingFields.forEach(field => {
+                        if (!field.receivedRatings()) {
+                            field.showError("Please submit all ratings!");
+                        }
+                    });
+                }
 
                 queRatingFields.forEach(field => {
                     if (!field.receivedRatings()) {
@@ -339,7 +346,7 @@ function installRatingForms() {
                 }
             });
         } else {
-            if (this.field.classList.contains("mandatory")) {
+            if (window.RatingForm.field.classList.contains("mandatory")) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
                 ratingFields.forEach(field => {
